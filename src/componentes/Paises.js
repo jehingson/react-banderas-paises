@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import {Link} from 'react-router-dom'
 
 const PaisesStyled = styled.div`
   width: 264px;
@@ -13,6 +13,7 @@ const PaisesStyled = styled.div`
     width: 100%;
     heigth:160px;
     object-fit:cover;
+    cursor: pointer;
   }
   .datos{
     padding: 1.5em;
@@ -28,7 +29,6 @@ const PaisesStyled = styled.div`
     margin-bottom: .5rem;
     font-weight: 600;
   }
-
 `
 
 function Paises({
@@ -36,17 +36,24 @@ function Paises({
   name,
   poblacion,
   region,
-  capital
+  capital,
+  numericCode
 }) {
   return (
     <PaisesStyled>
-      <img src={bandera} alt="bandera" />
+      <Link to={`/pais/${
+  numericCode}`} >
+      <img loading="lazy" src={bandera} alt="bandera" />
+      </Link>
       <div className="datos">
+      <a>
       <h2>{name}</h2>
+      </a>
       <p><strong>Poblacion:</strong> {poblacion}</p>
       <p><strong>Region:</strong> {region}</p>
       <p><strong>Capital:</strong> {capital}</p>
       </div>
+      
 
     </PaisesStyled>
   )

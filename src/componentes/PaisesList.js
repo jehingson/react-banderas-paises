@@ -1,6 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
 import Paises from './Paises'
+import {DataContext} from '../context/ContextProvider'
+import Region from './Region'
+import Buscador from './Buscador'
 
 const PaisesListStyled = styled.div`
   display: grid;
@@ -12,30 +15,32 @@ const PaisesListStyled = styled.div`
 `
 
 function PaisesList() {
+  const value = useContext(DataContext)
+  const paisesList = value.paises[0]
+
   return (
     <PaisesListStyled>
-      <Paises
-        bandera="https://raw.githubusercontent.com/jehingson/react-project-flag/master/codigos/leonidas/my-flag/public/Bandera_venezuela.jpg"
-        name="Venezuela"
-        poblacion={12321321}
-        region="Sur America"
-        capital="Caracas"
-      />
-      <Paises
-        bandera="https://raw.githubusercontent.com/jehingson/react-project-flag/master/codigos/leonidas/my-flag/public/Bandera_venezuela.jpg"
-        name="Venezuela"
-        poblacion={12321321}
-        region="Sur America"
-        capital="Caracas"
-      />
-      <Paises
-        bandera="https://raw.githubusercontent.com/jehingson/react-project-flag/master/codigos/leonidas/my-flag/public/Bandera_venezuela.jpg"
-        name="Venezuela"
-        poblacion={12321321}
-        region="Sur America"
-        capital="Caracas"
-      />
+
+      <Buscador />
       
+      <Region />
+
+      { 
+        paisesList.map(({flag, name, population, region, capital, numericCode}) => {
+          return (
+          <Paises
+          numericCode={numericCode}
+          key={numericCode}
+          bandera={flag}
+          name={name}
+          poblacion={population}
+          region={region}
+          capital={capital}
+
+        />
+        )
+        })
+      }
     </PaisesListStyled>
   )
 }
