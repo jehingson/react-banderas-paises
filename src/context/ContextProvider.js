@@ -1,5 +1,4 @@
 import React, {createContext, useState, useEffect} from 'react'
-import Buscador from '../componentes/Buscador';
 
 export const DataContext = createContext();
 
@@ -11,14 +10,26 @@ export const ContextProvider = (props) => {
     const [buscador, setBuscador] = useState('')
 
     useEffect(()=>{
-        const filtrar = datas.filter(dato => dato.name.toLowerCase().includes(buscador.toLowerCase()))
+        if(region === ''){
+          const filtrar = datas.filter(dato => dato.name.toLowerCase().includes(buscador.toLowerCase()))
         setPaisesList(filtrar)
+        }else{
+          const filtro = datas.filter(regx => regx.region === region)
+          const filtrar = filtro.filter(dato => dato.name.toLowerCase().includes(buscador.toLowerCase()))
+          setPaisesList(filtrar)
+        }
+        
     },[buscador])
   
     useEffect(()=>{
+      if(region === ''){
+        setPaisesList(datas)
+
+      }else{
         const filtrar = datas.filter(regx => regx.region === region)
         console.log('FILTRO', filtrar)
         setPaisesList(filtrar)
+      }
     },[region])
 
     useEffect(()=>{

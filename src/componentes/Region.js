@@ -3,39 +3,39 @@ import styled from 'styled-components'
 import {DataContext} from '../context/ContextProvider'
 
 
-const RegionStyled = styled.div`
-
+const RegionStyled = styled.select`
+  padding: 1.3em;
+  border: none;
+  box-shadow: 0 2px 9px 0 rgba(0,0,0, .1);
+  border-radius: 5px;
+  outline: 0;
+  width: 200px;
+  
 `
 function Region() {
   const value = useContext(DataContext)
-  const setRegion = value.region[1]
+  const [region, setRegion] = value.region
+
+ /**
+   * Disptach filterByRegion action
+   * 
+   * @param {React.SyntheticEvent} selectEvent
+   */
+
   const onRegionChange = (event) => {
-    setRegion(event)
+    setRegion(event.target.value)
   }
   return (
-    <>
-    <RegionStyled >
-      <div >
-        <ul>
-          <li 
-          onClick={() => onRegionChange('Africa')}>Africa
-          </li>
-          <li 
-          onClick={() => onRegionChange('Americas')}> Americas
-          </li>
-          <li 
-          onClick={() => onRegionChange('Asia')}> Asia
-          </li>
-          <li 
-          onClick={() => onRegionChange('Europe')}> Europe
-          </li>
-          <li 
-          onClick={() => onRegionChange('Oceania')}> Oceania
-          </li>
-        </ul>
-      </div>
-    </RegionStyled>
-    </>
+
+      <RegionStyled  onChange={onRegionChange} value={region} >
+        <option value="">Filtrar Continente</option>
+        <option value="Africa">Africa</option>
+        <option value="Americas">Americas</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="Oceania">Oceania</option>
+      </RegionStyled >
+
   )
 }
 

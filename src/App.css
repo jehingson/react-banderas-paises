@@ -8,7 +8,9 @@ html{
 }
 body{
   font-family: 'Nunito Sans', sans-serif;
-  color: var(--black)
+  color: var(--black);
+  background :var(--background);
+  box-sizing: border-box;
 }
 .App {
   text-align: center;

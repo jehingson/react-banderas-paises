@@ -7,15 +7,15 @@ import {
 import {ContextProvider} from './context/ContextProvider'
 import PaisesList from './componentes/PaisesList'
 import Pais from './componentes/Pais'
-
+import Header from "./componentes/Header";
 
 function App() {
   return (
     <ContextProvider>
     <div className="App">
       <Router>
+        <Header />
         <Switch>
-       
         <Route 
           exact 
           path="/"
@@ -26,7 +26,6 @@ function App() {
           path="/pais/:id"
           component={Pais}
           />
-          
         </Switch>
       </Router> 
     </div>
