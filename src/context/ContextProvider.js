@@ -8,11 +8,35 @@ export const ContextProvider = (props) => {
     const [paisesList, setPaisesList] = useState([])
     const [region, setRegion] = useState('')
     const [buscador, setBuscador] = useState('')
+    const [pais, setPais] = useState([])
+    
+    const ids = (id) => {
+      const data = datas.filter(dato => {
+        return dato.numericCode === id
+      })
+      console.log(data)
+      console.log('IDS', id)
+      if(data.length > 0){
+        setPais(data)
+      }else{
+        async function res (){
+          console.log('IDS',id)
+          const resul = await fetch('https://restcountries.eu/rest/v2/all')
+          const resull = await resul.json()
+          console.log('resull', resull)
+          const filtro = resull.filter(dato => dato.numericCode === id)
+          setPais(filtro)
+        }
+       res()
+      }
+      
+    }
+
 
     useEffect(()=>{
         if(region === ''){
           const filtrar = datas.filter(dato => dato.name.toLowerCase().includes(buscador.toLowerCase()))
-        setPaisesList(filtrar)
+          setPaisesList(filtrar)
         }else{
           const filtro = datas.filter(regx => regx.region === region)
           const filtrar = filtro.filter(dato => dato.name.toLowerCase().includes(buscador.toLowerCase()))
@@ -36,19 +60,24 @@ export const ContextProvider = (props) => {
         fetch('https://restcountries.eu/rest/v2/all')
           .then((response) => response.json())
           .then((data) => {
-            setDatas(data)
             setPaisesList(data)
-            console.log(data)
+            setDatas(data)
+            console.log('data', data)
           })
           .catch(()=>{
             console.log('hubo un error')
           })
       }, [])
 
+      
+      
+
     const value = {
         paises: [paisesList, setPaisesList],
         region: [region, setRegion],
-        buscador: [buscador, setBuscador]
+        buscador: [buscador, setBuscador],
+        ids: ids,
+        pais: [pais, setPais]
     }
 
     return(

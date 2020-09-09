@@ -4,7 +4,7 @@ import { DataContext } from "../context/ContextProvider";
 const BuscadorStyled = styled.label`
 box-sizing: border-box;
 display: inline-flex;
-background: white;
+background: var(--white);
 align-items:center;
 box-shadow: 0 2px 9px 0 rgba(0,0,0, .1);
 padding: 0 2rem;
@@ -22,11 +22,12 @@ border: none;
 padding:0 2rem;
 font-size: .7em;
 outline: 0;
+position: relative;
+background: var(--white);
 }
 input::-webkit-input-placeholder{
     color: #c4c4c4;
 }
-position: relative;
 .close{
   position: absolute;
   right: 1em;

@@ -3,20 +3,34 @@ import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
 const PaisesStyled = styled.div`
-  width: 264px;
   text-align: left;
   border-radius: 5px;
-  margin:1em;
-  overflow: hidden;
+  margin: 1em;
+  background: var(--white);
   box-shadow: 0 0 7px 2px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  &:hover .datos{
+    border-radius: 0 0 5px 5px;
+    border: 1px solid var(--black);
+    border-top: none;
+  }
+  
   img{
     width: 100%;
-    heigth:160px;
+    height: 160px;
     object-fit:cover;
-    cursor: pointer;
+    vertical-align: top;
+    border-radius: 5px 5px 0 0;
   }
   .datos{
     padding: 1.5em;
+    border: 1px solid transparent;
+    border-top: none;
+    transition: .3s border;
+  }
+  .a{
+    text-decoration: none;
+    color: var(--black);
   }
   h2{
     margin: 0;
@@ -42,18 +56,16 @@ function Paises({
   return (
     <PaisesStyled>
       <Link to={`/pais/${
-  numericCode}`} >
+  numericCode}`} className="a" >
       <img loading="lazy" src={bandera} alt="bandera" />
-      </Link>
       <div className="datos">
-      <a>
       <h2>{name}</h2>
-      </a>
       <p><strong>Poblacion:</strong> {poblacion}</p>
       <p><strong>Region:</strong> {region}</p>
       <p><strong>Capital:</strong> {capital}</p>
       </div>
-      
+      </Link>
+    
 
     </PaisesStyled>
   )

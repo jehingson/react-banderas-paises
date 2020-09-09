@@ -5,6 +5,9 @@ import Paises from './Paises'
 const BanderasStyled = styled.div`
 display: grid;
 grid-row-gap: 2.3em;
+grid-auto-flow: columns;
+grid-template-columns: repeat(auto-fill, minMax(0, 264px));
+grid-column-gap: 18px;
 justify-content: center;
 background: var(--background);
 padding: 4em 1em;

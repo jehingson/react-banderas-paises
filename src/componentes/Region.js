@@ -10,6 +10,8 @@ const RegionStyled = styled.select`
   border-radius: 5px;
   outline: 0;
   width: 200px;
+  color: var(--black);
+  background: var(--white);
   
 `
 function Region() {
