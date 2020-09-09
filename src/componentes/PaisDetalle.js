@@ -9,8 +9,7 @@ color: var(--black);
 img{
     width: 100%;
     max-width: 510px;
-    
-    height: 305px;
+    height: 300px;
     margin-bottom: 1em;
     padding-bottom: 2em;
   }
@@ -85,9 +84,9 @@ function PaisDetalle({ pais }) {
                 <p><strong>Capital:</strong>{dato.capital}</p>
               </div>
               <div>
-                <p><strong>Top Level Domain:</strong>{dato.topLevelDomain}</p>
-                <p><strong>Currencies:</strong>{dato.currencies.map((item, index) => <span key={index}> {item.name}</span>)}</p>
-                <p className="languages"><strong>Lenguajes:</strong>{dato.languages.map((item, index) => <span key={index}> {item.name}  </span>)}</p>
+                <p><strong>Dominio de nivel superior:</strong>{dato.topLevelDomain}</p>
+                <p><strong>Monedas:</strong>{dato.currencies.map((item, index) => <span key={index}> {item.name}</span>)}</p>
+                <p className="languages"><strong>Idiomas:</strong>{dato.languages.map((item, index) => <span key={index}> {item.name}  </span>)}</p>
               </div>
             </div>
             <p className="borders"><strong>Fronteras: </strong> </p>

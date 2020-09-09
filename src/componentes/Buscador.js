@@ -23,6 +23,7 @@ padding:0 2rem;
 font-size: .7em;
 outline: 0;
 position: relative;
+color: var(--black);
 background: var(--white);
 }
 input::-webkit-input-placeholder{
@@ -30,9 +31,17 @@ input::-webkit-input-placeholder{
 }
 .close{
   position: absolute;
-  right: 1em;
+  right: 2em;
+  width:10px; 
+  padding: 0;
   border: none;
-  background: white;
+  background: var(--white);
+}
+@media (min-width: 767px){
+  .close{
+    right: 42rem;
+    padding: 0;
+  }
 }
 `
 
